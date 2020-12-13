@@ -1,0 +1,349 @@
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+.hamburger {
+  outline: none;
+  padding: 15px 15px;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.hamburger:hover {
+  opacity: 0.7;
+}
+
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: #fff;
+}
+
+.hamburger-box {
+  width: 40px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  width: 40px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -10px;
+}
+
+.hamburger-inner::after {
+  bottom: -10px;
+}
+
+/*
+     * Spring
+     */
+.hamburger--spring .hamburger-inner {
+  top: 2px;
+  transition: background-color 0s 0.13s linear;
+}
+
+.hamburger--spring .hamburger-inner::before {
+  top: 10px;
+  transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spring .hamburger-inner::after {
+  top: 20px;
+  transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spring.is-active .hamburger-inner {
+  transition-delay: 0.22s;
+  background-color: transparent !important;
+}
+
+.hamburger--spring.is-active .hamburger-inner::before {
+  top: 0;
+  transition: top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+
+.hamburger--spring.is-active .hamburger-inner::after {
+  top: 0;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translate3d(0, 10px, 0) rotate(-45deg);
+}
+
+/*
+     * Spring Reverse
+     */
+.hamburger--spring-r .hamburger-inner {
+  top: auto;
+  bottom: 0;
+  transition-duration: 0.13s;
+  transition-delay: 0s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spring-r .hamburger-inner::after {
+  top: -20px;
+  transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0s linear;
+}
+
+.hamburger--spring-r .hamburger-inner::before {
+  transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spring-r.is-active .hamburger-inner {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+  transition-delay: 0.22s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hamburger--spring-r.is-active .hamburger-inner::after {
+  top: 0;
+  opacity: 0;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0s 0.22s linear;
+}
+
+.hamburger--spring-r.is-active .hamburger-inner::before {
+  top: 0;
+  transform: rotate(90deg);
+  transition: top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header nav {
+  background-color: #333;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav .logo {
+  display: inline-block;
+  color: #fff;
+  line-height: 50px;
+  margin-left: 10px;
+}
+
+header nav .nav1 {
+  display: inline-block;
+}
+
+header nav .nav1 li {
+  width: 60px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 576px) {
+  header nav .nav1 li {
+    display: block;
+    width: 100%;
+    height: unset;
+    background-color: #666;
+  }
+}
+
+header nav .nav1 li .nav2 {
+  display: none;
+  position: absolute;
+  z-index: 2;
+}
+
+@media screen and (max-width: 576px) {
+  header nav .nav1 li .nav2 {
+    position: unset;
+    z-index: unset;
+  }
+}
+
+header nav .nav1 li .showlist {
+  display: block;
+}
+
+header nav .nav1 li .showlist li {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+}
+
+@media screen and (min-width: 577px) {
+  header nav .nav1 .aList:hover .nav2 {
+    display: block;
+  }
+  header nav .nav1 .aList:hover .nav2 li {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  header nav .nav1 {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    z-index: 3;
+  }
+}
+
+@media screen and (min-width: 577px) {
+  header nav .nav1 {
+    display: inline-block !important;
+  }
+}
+
+header .hamburger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
+@media screen and (max-width: 576px) {
+  header .hamburger {
+    display: block;
+    position: absolute;
+    z-index: 4;
+  }
+}
+
+.sliderBanner {
+  width: 100%;
+  position: relative;
+}
+
+.sliderBanner .slider {
+  display: none;
+  width: 100%;
+}
+
+.sliderBanner .slider img {
+  width: 100%;
+}
+
+.sliderBanner .prev, .sliderBanner .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.sliderBanner .next {
+  right: 0;
+}
+
+.dots {
+  text-align: center;
+}
+
+.dots .dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.5s ease;
+}
+
+.dots .dot:hover {
+  background-color: #444;
+}
+
+.dots .active {
+  background-color: #444;
+}
+
+h2 {
+  text-align: center;
+}
+
+.content {
+  margin: 30px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.content .card {
+  display: block;
+  margin: 10px;
+  font-size: 0;
+  border: 1px solid #888;
+  width: 300px;
+}
+
+.content .card p {
+  display: block;
+  font-size: 1rem;
+}
+
+.content .card .img:hover {
+  transform: scale(1.1, 1.1);
+  transition: all 1s ease-out;
+}
+
+footer {
+  background-color: #888;
+  height: 90px;
+}
+
+footer p {
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  font-size: 2rem;
+}
+/*# sourceMappingURL=style.css.map */

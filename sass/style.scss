@@ -1,0 +1,177 @@
+@import "hamburgers";
+@import "rwd";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    nav{
+        background-color: #333;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        .logo{
+            display: inline-block;
+            color: #fff;
+            line-height: 50px;
+            margin-left: 10px;
+        }
+        .nav1{
+            display: inline-block;
+            li{
+                width: 60px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                display: inline-block;
+                color: #fff;
+                font-size: 14px;
+                @include rwd(phone){
+                    display: block;
+                    width: 100%;
+                    height: unset;
+                    background-color: #666;
+                }
+                .nav2{
+                    display: none;
+                    position: absolute;
+                    z-index: 2;
+                    @include rwd(phone){
+                        position: unset;
+                        z-index: unset;
+                    }
+                }
+                .showlist{
+                    display: block;
+                    li{
+                        display: block;
+                        height: 30px;
+                        line-height: 30px;
+                    }
+                    
+                }
+            }
+            .aList{
+                @include rwd(desk){
+                    &:hover{
+                        .nav2{
+                            display: block;
+                            li{
+                                display: block;
+                                height: 30px;
+                                line-height: 30px;
+                            }
+                        }
+                    }
+                }
+                
+            }   
+            @include rwd(phone){
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                z-index: 3;
+            }
+            @include rwd(desk){
+                display: inline-block !important;
+            }
+        }
+    
+    }
+    .hamburger{
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+        @include rwd(phone){
+            display: block;
+            position: absolute;
+            z-index: 4;
+        }
+    }
+
+}
+.sliderBanner{
+    width: 100%;
+    position: relative;
+    .slider{
+        display: none;
+        width: 100%;
+        img{
+            width: 100%;
+        }
+    }
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 8px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .next{
+        right: 0;
+    }
+}
+.dots{
+    text-align: center;
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.5s ease;
+        &:hover{
+            background-color: #444;
+        }
+        }
+    .active{
+        background-color: #444;
+    }
+}
+
+h2{
+    text-align: center;
+}
+.content{
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .card{
+        display: block;
+        margin: 10px;
+        font-size: 0;
+        border: 1px solid #888;
+        width: 300px;
+        p{
+            display: block;
+            font-size: 1rem;
+            
+        }
+        .img{
+            &:hover{
+                transform:scale(1.1,1.1);
+                transition: all 1s ease-out;
+            }
+        }
+    }
+}
+footer{
+    background-color: #888;
+    height: 90px;
+    p{
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 90px;
+        font-size: 2rem;
+    }
+}

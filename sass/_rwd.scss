@@ -1,0 +1,12 @@
+@mixin rwd($breakpoint) {
+    @if $breakpoint =="desk"{
+        @media screen and (min-width:577px) {
+            @content;
+        }
+    }
+    @else if $breakpoint =="phone"{
+        @media screen and (max-width:576px) {
+            @content;
+        }
+    }
+}
